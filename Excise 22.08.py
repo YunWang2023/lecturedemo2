@@ -1,9 +1,5 @@
-
-#2. Variables and interactive programs
-
 #1
 print("Hello Wang Yun")
-
 
 #2
 Radius = float(input("Radius: "))
@@ -55,24 +51,10 @@ print(f"The weight in modern units:{kilograms:.0f} kilograms and {grams:.2f} gra
 #6
 import random
 
-num3_1=random.randint(0,9)
-num3_2=random.randint(0,9)
-num3_3=random.randint(0,9)
-print(f"3-digit code is: {num3_1}{num3_2}{num3_3}")
 
-num3_11=random.randint(0,9)
-num3_22=random.randint(0,9)
-num3_33=random.randint(0,9)
-print(f"3-digit code is: {num3_11}{num3_22}{num3_33}")
 
 num4_1=random.randint(1,6)
 num4_2=random.randint(1,6)
 num4_3=random.randint(1,6)
 num4_4=random.randint(1,6)
-print(f"4-digit code is: {num4_1}{num4_2}{num4_3}{num4_4}")
 
-num4_11=random.randint(1,6)
-num4_22=random.randint(1,6)
-num4_33=random.randint(1,6)
-num4_44=random.randint(1,6)
-print(f"4-digit code is: {num4_11}{num4_22}{num4_33}{num4_44}")
