@@ -1,6 +1,7 @@
 
 #2. Variables and interactive programs
 
+''''
 #1
 print("Hello Wang Yun")
 
@@ -50,8 +51,6 @@ grams=total_grams%1000
 print(f"The weight in modern units:{kilograms:.0f} kilograms and {grams:.2f} grams.")
 
 
-
-
 #6
 import random
 
@@ -76,3 +75,58 @@ num4_22=random.randint(1,6)
 num4_33=random.randint(1,6)
 num4_44=random.randint(1,6)
 print(f"4-digit code is: {num4_11}{num4_22}{num4_33}{num4_44}")
+
+
+
+#2. Variables and interactive programs
+
+#2-1
+
+length = int(input("Enter the length of a zander in centimeters:"))
+limit = 42
+if length>= 42 :
+    print("It is OK")
+else:
+    x= limit - length
+    print(f"Release the fish back into the lake. {x} centimeters below the size limit.")
+
+
+
+#2-2
+
+input_class = input("enter the cabin class of a cruise ship:")
+if input_class == "LUX":
+    print("upper-deck cabin with a balcony.")
+elif input_class == "A":
+    print("above the car deck, equipped with a window.")
+elif input_class == "B":
+    print("windowless cabin above the car deck.")
+else:
+    print("windowless cabin below the car deck.")
+
+
+
+#2-3
+input_hemoglobin = input("Enter biological gender(M or F):")
+
+input_biological = float(input("Enter hemoglobin:"))
+
+if input_hemoglobin == "F" and 117<=input_biological<=155 or input_hemoglobin == "M" and 134<=input_biological<=167:
+    print("Normal")
+
+elif input_hemoglobin == "F" and 117>input_biological or input_hemoglobin == "M" and 134>input_biological:
+    print("Low")
+
+else:
+    print("High")
+
+
+#2-4
+
+input_year=int(input("Enter year:"))
+if input_year%4==0 and input_year%100!=0 or input_year%400==0:
+    print("This is a leap year.")
+else:
+    print("This is not a leap year.")
+
+'''
