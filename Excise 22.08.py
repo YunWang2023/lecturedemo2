@@ -78,9 +78,9 @@ print(f"4-digit code is: {num4_11}{num4_22}{num4_33}{num4_44}")
 
 
 
-#2. Variables and interactive programs
+#3. Conditional structures (if)
 
-#2-1
+#3-1
 
 length = int(input("Enter the length of a zander in centimeters:"))
 limit = 42
@@ -91,8 +91,7 @@ else:
     print(f"Release the fish back into the lake. {x} centimeters below the size limit.")
 
 
-
-#2-2
+#3-2
 
 input_class = input("enter the cabin class of a cruise ship:")
 if input_class == "LUX":
@@ -105,9 +104,8 @@ else:
     print("windowless cabin below the car deck.")
 
 
-
-#2-3
-input_hemoglobin = input("Enter biological gender(M or F):")
+#3-3
+input_hemoglobin = input("Enter biological gender(M or F):").upper()
 
 input_biological = float(input("Enter hemoglobin:"))
 
@@ -121,7 +119,7 @@ else:
     print("High")
 
 
-#2-4
+#3-4
 
 input_year=int(input("Enter year:"))
 if input_year%4==0 and input_year%100!=0 or input_year%400==0:
@@ -129,4 +127,44 @@ if input_year%4==0 and input_year%100!=0 or input_year%400==0:
 else:
     print("This is not a leap year.")
 
+
+
+#4. While loops (while)
+
+#4-1 Write a program that uses a while loop to print out all numbers divisible by three in the range of 1-1000.
+
+limit = 1000
+start = 1
+while start <= limit :
+    if start % 3 == 0 :
+       print(start)
+    start += 1
+
+
+
+#4-2 Write a program that converts inches to centimeters until the user inputs a negative value. Then the program ends.
+
+inch = float(input("Enter inch:"))
+while inch>=0 :
+    cm=2.54*inch
+    print(f"{inch}in.={cm}cm")
+    inch = float(input("Enter inch:"))
+
 '''
+#4-3 Write a program that asks the user to enter numbers until they enter an empty string to quit. Finally, the program prints out the smallest and largest number from the numbers it received.
+
+numbers = input("Enter numbers:")
+numbers_float = float(numbers)
+largest = numbers_float
+smallest = numbers_float
+
+while numbers != "" :
+    numbers_float = float(numbers)
+    if numbers_float > largest :
+        largest = numbers_float
+    elif numbers_float < smallest :
+        smallest = numbers_float
+    numbers = input("Enter numbers:")
+
+
+print(f"The smallest number is {smallest} and largest number is {largest}")
