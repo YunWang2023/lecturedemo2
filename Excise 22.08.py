@@ -185,7 +185,6 @@ while guess_number != target_number:
 print(f"Correct")
 
 
-
 #4-5
 username = input("Enter your username:")
 pswd = input("Enter your password:")
