@@ -150,7 +150,7 @@ while inch>=0 :
     print(f"{inch}in.={cm}cm")
     inch = float(input("Enter inch:"))
 
-'''
+
 #4-3 Write a program that asks the user to enter numbers until they enter an empty string to quit. Finally, the program prints out the smallest and largest number from the numbers it received.
 
 numbers = input("Enter numbers:")
@@ -166,5 +166,54 @@ while numbers != "" :
         smallest = numbers_float
     numbers = input("Enter numbers:")
 
-
 print(f"The smallest number is {smallest} and largest number is {largest}")
+
+
+#4-4
+
+import random
+
+target_number = random.randint(1,10)
+guess_number = int(input("Enter a number:"))
+while guess_number != target_number:
+
+  if guess_number > target_number:
+    print(f"Too high.")
+  elif guess_number < target_number:
+    print(f"Too low.")
+  guess_number =int(input("Enter a number:"))
+print(f"Correct")
+
+
+
+#4-5
+username = input("Enter your username:")
+pswd = input("Enter your password:")
+times = 0
+
+while times<= 5:
+    if username != "python" or pswd != "rules":
+        print("WAccess denied.")
+        times+=1
+        username = input("Enter your username:")
+        pswd = input("Enter your password:")
+    else:
+        print("Welcome")
+        break
+'''
+
+#4-6
+import random
+N = int(input("How many random points to generate:"))
+times = 0
+n = 0
+while times <= N :
+    x = random.uniform(-1,1)
+    y = random.uniform(-1,1)
+    if x**2 + y**2 < 1:
+        times+=1
+        n+=1
+    else :
+        times+=1
+pi = 4*(n/N)
+print(f"The value of pi is {pi}.")
