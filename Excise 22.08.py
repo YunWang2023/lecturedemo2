@@ -1,7 +1,7 @@
 
 #2. Variables and interactive programs
 
-''''
+'''
 #1
 print("Hello Wang Yun")
 
@@ -165,7 +165,6 @@ while numbers != "" :
     elif numbers_float < smallest :
         smallest = numbers_float
     numbers = input("Enter numbers:")
-
 print(f"The smallest number is {smallest} and largest number is {largest}")
 
 
@@ -199,7 +198,7 @@ while times<= 5:
     else:
         print("Welcome")
         break
-'''
+
 
 #4-6
 import random
@@ -216,3 +215,45 @@ while times <= N :
         times+=1
 pi = 4*(n/N)
 print(f"The value of pi is {pi}.")
+
+
+
+#5-1
+import random
+numbers = []
+number = int(input("How many dice to roll:"))
+count = 0
+sum = 0
+while count < number:
+    n = random.randint(1,6)
+    print(n)
+    numbers.append(n)
+    count+=1
+for i in numbers:
+    sum += i
+print(f"The sum is {sum}")
+
+#5-2
+numbers = []
+while True:
+    number = input("Enter a number:")
+    if number =="":
+        break
+    numbers.append(int(number))
+
+sorted_numbers=sorted(numbers,reverse=True)
+print(sorted_numbers[0],sorted_numbers[1],sorted_numbers[2],sorted_numbers[3],sorted_numbers[4])
+
+'''
+#5-3
+number = input("Enter a number:")
+dividend = 2
+while True :
+    if number % dividend == 0 :
+        break
+
+
+
+print(number,"is a prime number")
+
+
