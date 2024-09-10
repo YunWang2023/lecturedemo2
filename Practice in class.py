@@ -147,7 +147,8 @@ print(f"The product is :",multiply(2,5))
 print(f"The quotient is :",divide(2,5))
 print(f"The difference is :",subtract(2,5))
 
-'''
+
+#6
 numbers = []
 
 def sum (numbers) :
@@ -181,3 +182,89 @@ while True:
 
 
 print(f"sum is : {sum(numbers)} \n largest is :{find_largest(numbers)}\n smallest is: {find_smallest(numbers)}")
+
+
+
+#7 Tuple
+days_of_the_week = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+day_number = int(input("Enter the day number (1-7): "))
+day = days_of_the_week[day_number-1]
+print(f"Day number {day_number} is {day}.")
+
+
+
+#7a
+day_weeks = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+day_number = int(input("Enter the day number (1-7): "))
+day = day_weeks[day_number-1]
+print(f"Day number {day_number} is {day}.")
+
+
+#7b
+import random
+def cast():
+    first,second = random.randint(1,6),random.randint(1,6)
+    return first,second
+dice1,dice2 = cast()
+print(f"The dice shows {dice1} and {dice2}")
+
+
+#7c
+fruits = "orange","apple","bananas"
+print(fruits)
+first,second,third = fruits
+print(f"first fruit is {first}, second fruit is {second}")
+
+#7d
+
+# fruits = "Orange", "Banana", "Apple"
+# (first, second, third) = fruits
+# print(f"The fruits are: {first}, {second} and {third}.")
+
+#7e
+import random
+
+def cast():
+    first, second ,third = random.randint(1,6), random.randint(1,6),random.randint(1,6)
+    return first, second,third
+
+die1, die2 ,die3= cast()
+print(f"The dice show {die1} and {die2} and {die3}.")
+
+
+#7f
+my_list = [1,2,3]
+my_list.append(4)
+print(my_list)
+my_list.remove(3)
+print(my_list)
+my_list2 = my_list.pop()
+print(my_list2)
+print(my_list)
+my_list.append(5)
+my_list.append(6)
+my_list.append(7)
+print(my_list)
+my_list3 = my_list.pop(3)
+print(my_list3)
+print(my_list)
+
+
+#7g
+my_tuple = (1,2,3,4,6,4,2,3,7,7,7)
+count_of_7 = my_tuple.count(7)
+print(count_of_7)
+index_of_7 = my_tuple.index(7)
+print(index_of_7)
+
+'''
+#7h
+
+my_dt1 = {"Zhang":87,"Li":99,"Wang":60}
+print(my_dt1)
+my_dt1["Zhao"] = 100
+search_name = input("Enter a name: ")
+if search_name in my_dt1:
+    print(f"The score of {search_name} is :{my_dt1[search_name]}")
+
+

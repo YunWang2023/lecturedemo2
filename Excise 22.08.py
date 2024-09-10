@@ -246,14 +246,14 @@ print(sorted_numbers[0],sorted_numbers[1],sorted_numbers[2],sorted_numbers[3],so
 
 '''
 #5-3
-number = input("Enter a number:")
-dividend = 2
-while True :
-    if number % dividend == 0 :
-        break
+number = int(input("Enter a number:"))
+dividend = 1
+while dividend <= number and number/dividend != 0:
+    dividend += 1
+if dividend < number:
+    print (f"{number}is a prime number")
+else:
+    print(f"{number} is not a prime number")
 
-
-
-print(number,"is a prime number")
 
 
