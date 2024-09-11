@@ -244,16 +244,222 @@ while True:
 sorted_numbers=sorted(numbers,reverse=True)
 print(sorted_numbers[0],sorted_numbers[1],sorted_numbers[2],sorted_numbers[3],sorted_numbers[4])
 
-'''
+
 #5-3
 number = int(input("Enter a number:"))
 dividend = 1
-while dividend <= number and number/dividend != 0:
-    dividend += 1
-if dividend < number:
-    print (f"{number}is a prime number")
+if number==1:
+   print(f"{number} is not a prime number")
 else:
-    print(f"{number} is not a prime number")
+    while True  :
+        dividend += 1
+        if dividend <= number and number % dividend ==0:
+           break
+    if dividend  < number:
+        print (f"{number} is not a prime number")
+    else:
+        print(f"{number} is a prime number")
 
+
+
+#5-4
+cities_list = []
+city = input("Enter a city:")
+while city !="" :
+    cities_list.append(city)
+    city = input("Enter a city:")
+for city in cities_list :
+    print (f"-{city} ")
+
+
+#6-1
+import random
+def random_dic():
+    dic = int(random.randint(1,6))
+    return dic
+
+while True:
+    random_number = random_dic()
+    print(random_number)
+    if random_number == 6 :
+        break
+
+
+#6-2
+import random
+
+max_number = int (input("Enter the max_number:"))
+
+def random_dic():
+    dic = int(random.randint(1,max_number))
+    return dic
+
+while True:
+    random_number = random_dic()
+    print(random_number)
+    if random_number == max_number :
+        break
+
+
+#6-3
+def gal_to_l (gal) :
+    l = float(gal) * 3.78541
+    return l
+
+gal_str = input("Enter the gallons:")
+
+while gal_str!= "" :
+    gal = gal_to_l(gal_str)
+    print(gal)
+    gal_str = input("Enter the gallons:")
+
+
+#6-4
+def sum_of_list (list):
+    length = len(list)
+    count = 0
+    sum = 0
+    while True:
+            sum += list[count]
+            count += 1
+            if count == length :
+                break
+    return sum
+
+numbers_list = []
+number = input("Enter a number:")
+while number != "" :
+    number_int=int(number)
+    numbers_list.append(number_int)
+    number = input("Enter a number:")
+
+the_sum_of_list = sum_of_list(numbers_list)
+print(f"The sum is {the_sum_of_list}")
+
+
+#6-5
+def cut_uneven_number (list):
+    length = len(list)
+    count = 0
+    even_number = []
+    while count < length :
+        if list[count]%2 == 0:
+            even_number.append(list[count])
+        count += 1
+    return even_number
+
+original_list=[]
+number = input("Enter a number:")
+while number != "" :
+    number_int=int(number)
+    original_list.append(number_int)
+    number = input("Enter a number:")
+
+print(original_list)
+even_number = cut_uneven_number(original_list)
+print(even_number)
+
+
+#6-6
+def calculates_unit_price(price,diameter):
+    unit_price = price/((diameter/2)*(diameter/2)*3.14)
+    return unit_price
+
+diameter_first_pizza = float(input("Enter the diameter of the first pizza in centimeters:"))
+price_first_pizza= float(input("Enter the price of the first pizza:"))
+diameter_second_pizza = float(input("Enter the diameter of the second pizza in centimeters:"))
+price_second_pizza= float(input("Enter the price of the second pizza:"))
+
+if calculates_unit_price(price_first_pizza,diameter_first_pizza) < calculates_unit_price(price_second_pizza,diameter_second_pizza):
+    print("The first pizza provides better value for money ")
+elif calculates_unit_price(price_first_pizza,diameter_first_pizza) > calculates_unit_price(price_second_pizza,diameter_second_pizza):
+    print("The first pizza provides better value for money ")
+else:
+    print("The two pizzas have the same value for money ")
+
+
+#7-1
+seasons=("spring", "spring","spring","summer", "summer","summer","autumn", "autumn","autumn","winter","winter","winter")
+number_of_month=int(input("Enter the number of months:"))
+if number_of_month==12 :
+    print(seasons[0])
+elif 0<number_of_month<12 :
+    print(seasons[number_of_month-1])
+else:
+    print("The number must be between 1 and 12")
+
+
+#7-2
+names_set=set()
+name_input=input("Enter a name:")
+while name_input !="":
+    if name_input in names_set:
+        print(f"Existing name")
+    else:
+        print(f"New name")
+        names_set.add(name_input)
+    name_input = input("Enter a name:")
+print(f"The list of names is :")
+for name in names_set:
+    print(name)
+
+
+
+#7-3
+
+airport_data = dict()
+chose_use=print(input("""
+Enter a new airport,press 1,
+Fetch the information of an existing airport ,press 2,
+Quit,press Enter
+"""))
+
+while chose!="":
+    if chose == 1:
+        new_ICAO_code = print(input("Enter a new ICAO code:"))
+        new_airport = print(input("Enter new airport:"))
+        airport_data [new_ICAO_code] = new_airport
+        print("Date updated")
+        chose = print(input(""" 
+        Enter a new airport,press 1,
+        Fetch the information of an existing airport ,press 2,
+        Quit,press q"""))
+
+    elif chose == 2:
+        ICAO_code_to_check = print(input("Enter ICAO code:"))
+        print(f"The airport is {airport_data[ICAO_code_to_check]}")
+        chose = print(input(""" 
+        Enter a new airport,press 1,
+        Fetch the information of an existing airport ,press 2,
+        Quit,press q"""))
+
+    elif chose == "":
+        break
+
+'''
+airport_data = dict()
+chose=print(input("Enter a new airport,press 1"))
+
+while chose!="":
+    if chose == 1:
+        new_ICAO_code = print(input("Enter a new ICAO code:"))
+        new_airport = print(input("Enter new airport:"))
+        airport_data [new_ICAO_code] = new_airport
+        print("Date updated")
+        chose = print(input(""" 
+        Enter a new airport,press 1,
+        Fetch the information of an existing airport ,press 2,
+        Quit,press q"""))
+
+    elif chose == 2:
+        ICAO_code_to_check = print(input("Enter ICAO code:"))
+        print(f"The airport is {airport_data[ICAO_code_to_check]}")
+        chose = print(input(""" 
+        Enter a new airport,press 1,
+        Fetch the information of an existing airport ,press 2,
+        Quit,press q"""))
+
+    elif chose == "":
+        break
 
 
