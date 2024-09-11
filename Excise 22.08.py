@@ -1,6 +1,3 @@
-
-#2. Variables and interactive programs
-
 '''
 #1
 print("Hello Wang Yun")
@@ -19,11 +16,11 @@ print(f"a={a},b={b}")
 print(f"a={b},b={a}")
 
 length=float(input('Enter length: '))
-wideth=float(input('Enter wideth: '))
+width=float(input('Enter width: '))
 
-print(f"length={length},wideth={wideth}")
-print(f"Perimeter={length*2+wideth*2}")
-print(f"Area={length*wideth}")
+print(f"length={length},width={width}")
+print(f"Perimeter={length*2+width*2}")
+print(f"Area={length*width}")
 
 
 #4
@@ -229,8 +226,8 @@ while count < number:
     print(n)
     numbers.append(n)
     count+=1
-for i in numbers:
-    sum += i
+for I in numbers:
+    sum += I
 print(f"The sum is {sum}")
 
 #5-2
@@ -404,62 +401,37 @@ for name in names_set:
     print(name)
 
 
-
+'''
 #7-3
 
 airport_data = dict()
-chose_use=print(input("""
-Enter a new airport,press 1,
-Fetch the information of an existing airport ,press 2,
-Quit,press Enter
-"""))
 
-while chose!="":
-    if chose == 1:
-        new_ICAO_code = print(input("Enter a new ICAO code:"))
-        new_airport = print(input("Enter new airport:"))
+while True:
+    print("Enter a new airport,press 1")
+    print("Fetch the information,press 2")
+    print("Quick,press Enter")
+    choice = input("What is your choice?\n")
+
+    if choice == "1":
+        new_ICAO_code = input("Enter a new ICAO code:")
+        new_airport = input("Enter new airport:")
         airport_data [new_ICAO_code] = new_airport
-        print("Date updated")
-        chose = print(input(""" 
-        Enter a new airport,press 1,
-        Fetch the information of an existing airport ,press 2,
-        Quit,press q"""))
+        print("Date updated\n")
 
-    elif chose == 2:
-        ICAO_code_to_check = print(input("Enter ICAO code:"))
-        print(f"The airport is {airport_data[ICAO_code_to_check]}")
-        chose = print(input(""" 
-        Enter a new airport,press 1,
-        Fetch the information of an existing airport ,press 2,
-        Quit,press q"""))
 
-    elif chose == "":
+    elif choice == "2":
+        ICAO_code_to_check = input("Enter ICAO code:")
+        print(f"The airport is {airport_data[ICAO_code_to_check]}\n")
+
+    elif choice == "":
         break
+    else:
+        print("Invalid input\n")
+print("Bye\n")
 
-'''
-airport_data = dict()
-chose=print(input("Enter a new airport,press 1"))
 
-while chose!="":
-    if chose == 1:
-        new_ICAO_code = print(input("Enter a new ICAO code:"))
-        new_airport = print(input("Enter new airport:"))
-        airport_data [new_ICAO_code] = new_airport
-        print("Date updated")
-        chose = print(input(""" 
-        Enter a new airport,press 1,
-        Fetch the information of an existing airport ,press 2,
-        Quit,press q"""))
 
-    elif chose == 2:
-        ICAO_code_to_check = print(input("Enter ICAO code:"))
-        print(f"The airport is {airport_data[ICAO_code_to_check]}")
-        chose = print(input(""" 
-        Enter a new airport,press 1,
-        Fetch the information of an existing airport ,press 2,
-        Quit,press q"""))
 
-    elif chose == "":
-        break
+
 
 
