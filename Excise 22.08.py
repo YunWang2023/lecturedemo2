@@ -425,6 +425,7 @@ while True:
 
     elif choice == "":
         break
+
     else:
         print("Invalid input\n")
 print("Bye\n")
