@@ -257,7 +257,7 @@ print(count_of_7)
 index_of_7 = my_tuple.index(7)
 print(index_of_7)
 
-'''
+
 #7h
 
 my_dt1 = {"Zhang":87,"Li":99,"Wang":60}
@@ -267,4 +267,55 @@ search_name = input("Enter a name: ")
 if search_name in my_dt1:
     print(f"The score of {search_name} is :{my_dt1[search_name]}")
 
+#5a
+import random
+numbers = []
+number = int(input("How many dice to roll:"))
+sum = 0
+for i in range(number):
+    number = random.randint(1,6)
+    numbers.append(number)
+    sum += number
+print(numbers)
+print(f"The sum is :{sum}")
 
+#5b
+numbers = []
+while True:
+    number = input("Enter a number:")
+    if number =="":
+        break
+    numbers.append(int(number))
+
+sorted_numbers=sorted(numbers,reverse=True)
+print(sorted_numbers)
+
+#5c
+number = int(input("Enter a number:"))
+dividend = 1
+if number==1:
+   print(f"{number} is not a prime number")
+else:
+    while True  :
+        dividend += 1
+        if dividend <= number and number % dividend ==0:
+           break
+    if dividend  < number:
+        print (f"{number} is not a prime number")
+    else:
+        print(f"{number} is a prime number")
+
+'''
+#5d
+number = int(input("Enter a number:"))
+dividend = 1
+if number==1:
+   print(f"{number} is not a prime number")
+else:
+    for i in range(2,int(number**0.5+1)):
+        if number % i == 0:
+            print(f"{number} is not a prime number")
+            break
+
+    else:
+        print(f"{number} is a prime number")

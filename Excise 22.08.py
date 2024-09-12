@@ -230,6 +230,18 @@ for I in numbers:
     sum += I
 print(f"The sum is {sum}")
 
+#5-1b
+import random
+numbers = []
+number = int(input("How many dice to roll:"))
+sum = 0
+for i in range(number):
+    number = random.randint(1,6)
+    numbers.append(number)
+    sum += number
+print(numbers)
+print(f"The sum is :{sum}")
+
 #5-2
 numbers = []
 while True:
@@ -239,8 +251,7 @@ while True:
     numbers.append(int(number))
 
 sorted_numbers=sorted(numbers,reverse=True)
-print(sorted_numbers[0],sorted_numbers[1],sorted_numbers[2],sorted_numbers[3],sorted_numbers[4])
-
+print(sorted_numbers)
 
 #5-3
 number = int(input("Enter a number:"))
@@ -257,6 +268,19 @@ else:
     else:
         print(f"{number} is a prime number")
 
+#5-3b
+number = int(input("Enter a number:"))
+dividend = 1
+if number==1:
+   print(f"{number} is not a prime number")
+else:
+    for i in range(2,int(number**0.5+1)):
+        if number % i == 0:
+            print(f"{number} is not a prime number")
+            break
+
+    else:
+        print(f"{number} is a prime number")
 
 
 #5-4
@@ -285,18 +309,19 @@ while True:
 #6-2
 import random
 
-max_number = int (input("Enter the max_number:"))
-
-def random_dic():
-    dic = int(random.randint(1,max_number))
+def random_dic(n):
+    dic = int(random.randint(1,n))
     return dic
 
-while True:
-    random_number = random_dic()
-    print(random_number)
-    if random_number == max_number :
-        break
-
+def main():
+    max_number = int (input("Enter the max_number:"))
+    while True:
+        random_number = random_dic(max_number)
+        print(random_number)
+        if random_number == max_number :
+            break
+if __name__ == '__main__':
+    main()
 
 #6-3
 def gal_to_l (gal) :
@@ -313,15 +338,10 @@ while gal_str!= "" :
 
 #6-4
 def sum_of_list (list):
-    length = len(list)
-    count = 0
-    sum = 0
-    while True:
-            sum += list[count]
-            count += 1
-            if count == length :
-                break
-    return sum
+    sum=0
+    for i in list:
+        sum+=i
+        return sum
 
 numbers_list = []
 number = input("Enter a number:")
@@ -336,13 +356,10 @@ print(f"The sum is {the_sum_of_list}")
 
 #6-5
 def cut_uneven_number (list):
-    length = len(list)
-    count = 0
     even_number = []
-    while count < length :
-        if list[count]%2 == 0:
-            even_number.append(list[count])
-        count += 1
+    for number in list:
+        if number % 2 == 0:
+            even_number.append(number)
     return even_number
 
 original_list=[]
@@ -355,11 +372,12 @@ while number != "" :
 print(original_list)
 even_number = cut_uneven_number(original_list)
 print(even_number)
-
+'''
 
 #6-6
+import math
 def calculates_unit_price(price,diameter):
-    unit_price = price/((diameter/2)*(diameter/2)*3.14)
+    unit_price = price/((diameter/2)**2*math.pi)
     return unit_price
 
 diameter_first_pizza = float(input("Enter the diameter of the first pizza in centimeters:"))
@@ -374,7 +392,7 @@ elif calculates_unit_price(price_first_pizza,diameter_first_pizza) > calculates_
 else:
     print("The two pizzas have the same value for money ")
 
-
+'''
 #7-1
 seasons=("spring", "spring","spring","summer", "summer","summer","autumn", "autumn","autumn","winter","winter","winter")
 number_of_month=int(input("Enter the number of months:"))
@@ -401,7 +419,7 @@ for name in names_set:
     print(name)
 
 
-'''
+
 #7-3
 
 airport_data = dict()
@@ -431,7 +449,7 @@ while True:
 print("Bye\n")
 
 
-
+'''
 
 
 
