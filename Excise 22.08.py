@@ -372,7 +372,7 @@ while number != "" :
 print(original_list)
 even_number = cut_uneven_number(original_list)
 print(even_number)
-'''
+
 
 #6-6
 import math
@@ -392,7 +392,7 @@ elif calculates_unit_price(price_first_pizza,diameter_first_pizza) > calculates_
 else:
     print("The two pizzas have the same value for money ")
 
-'''
+
 #7-1
 seasons=("spring", "spring","spring","summer", "summer","summer","autumn", "autumn","autumn","winter","winter","winter")
 number_of_month=int(input("Enter the number of months:"))
@@ -450,6 +450,8 @@ print("Bye\n")
 
 
 '''
+
+#8-1
 
 
 

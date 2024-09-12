@@ -1,11 +1,12 @@
 import mysql.connector
 connection = mysql.connector.connect(
-    host='127.0.0.1',
+    host='localhost',
     port= 3306,
     database='aaa',
     user='root',
-    password='123456',
+    password='200687',
     autocommit=True,
     charset='utf8mb4',
     collation='utf8mb4_unicode_ci'
     )
+
