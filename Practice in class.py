@@ -305,7 +305,7 @@ else:
     else:
         print(f"{number} is a prime number")
 
-'''
+
 #5d
 number = int(input("Enter a number:"))
 dividend = 1
@@ -319,3 +319,24 @@ else:
 
     else:
         print(f"{number} is a prime number")
+
+# 12
+def creat_list(number):
+    new_list = []
+    for i in range(1,number+1):
+        new_list.append(2*i)
+    return new_list
+
+
+number = 7
+print(creat_list(number))
+
+'''
+a = "6"
+b = 3
+c = "2"
+d = 1
+
+print(a+c)
+print(b+d)
+print(a*b)

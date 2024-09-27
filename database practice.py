@@ -10,3 +10,4 @@ connection = mysql.connector.connect(
     collation='utf8mb4_unicode_ci'
     )
 
+print("Connected successfully to MariaDB!")

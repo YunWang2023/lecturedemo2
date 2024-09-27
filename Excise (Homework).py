@@ -452,7 +452,10 @@ print("Bye\n")
 '''
 
 #8-1
-
+import random
+from random import randint
+e=randint(1,6)
+print(e)
 
 
 
