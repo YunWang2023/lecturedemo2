@@ -1,14 +1,15 @@
 '''
-#1
+#2. Variables and interactive programs
+#2-1
 print("Hello Wang Yun")
 
 
-#2
+#2-2
 Radius = float(input("Radius: "))
 Area= 3.14*(Radius**2)
 print(f"Area={Area:.2f}")
 
-#3
+#2-3
 
 a = int(input('Enter a: '))
 b = int(input('Enter b: '))
@@ -23,7 +24,7 @@ print(f"Perimeter={length*2+width*2}")
 print(f"Area={length*width}")
 
 
-#4
+#2-4
 a=int(input('Enter a: '))
 b=int(input('Enter b: '))
 c=int(input('Enter c: '))
@@ -34,7 +35,7 @@ average=sum/3
 print(f"sum={sum},product={product},average={average:.2f}")
 
 
-#5
+#2-5
 talents=float(input("Enter Talents: "))
 pounds=float(input("Enter Pounds: "))
 lots=float(input("Enter Lots: "))
@@ -48,7 +49,7 @@ grams=total_grams%1000
 print(f"The weight in modern units:{kilograms:.0f} kilograms and {grams:.2f} grams.")
 
 
-#6
+#2-6
 import random
 
 num3_1=random.randint(0,9)
@@ -214,7 +215,7 @@ pi = 4*(n/N)
 print(f"The value of pi is {pi}.")
 
 
-
+#5. List structures and iterative loops (for)
 #5-1
 import random
 numbers = []
@@ -292,7 +293,7 @@ while city !="" :
 for city in cities_list :
     print (f"-{city} ")
 
-
+#6. Functions
 #6-1
 import random
 def random_dic():
@@ -392,7 +393,7 @@ elif calculates_unit_price(price_first_pizza,diameter_first_pizza) > calculates_
 else:
     print("The two pizzas have the same value for money ")
 
-
+#7. Tuple, set, and dictionary
 #7-1
 seasons=("spring", "spring","spring","summer", "summer","summer","autumn", "autumn","autumn","winter","winter","winter")
 number_of_month=int(input("Enter the number of months:"))
@@ -448,14 +449,283 @@ while True:
         print("Invalid input\n")
 print("Bye\n")
 
+#8 Using relational databases
+#8-1
+import mysql.connector
+
+def get_airport_info(cursor, icao_code):
+    query = "SELECT name, municipality FROM airports WHERE ident = %s"
+    cursor.execute(query, (icao_code,))
+    result = cursor.fetchone()
+    return result
+
+def main():
+    icao_code = input("Enter the ICAO code of the airport: ")
+
+    connection = mysql.connector.connect(
+        host='127.0.0.1',
+        port=3306,
+        user='root',
+        password='200687',
+        database='countries',
+        autocommit=True
+    )
+
+    cursor = connection.cursor()
+
+    airport_info = get_airport_info(cursor, icao_code)
+
+    if airport_info:
+        airport_name, municipality = airport_info
+        print(f"Airport: {airport_name}, Location: {municipality}")
+    else:
+        print("No airport found.")
+
+    cursor.close()
+    connection.close()
+
+if _name_ == "_main_":
+    main()
+
+#8-2
+import mysql.connector
+
+def fetch_airports_by_country(cursor, iso_country):
+    query = """
+    SELECT type, COUNT(*) as count
+    FROM airports
+    WHERE iso_country = %s
+    GROUP BY type
+    ORDER BY count DESC
+    """
+    cursor.execute(query, (iso_country,))
+    return cursor.fetchall()
+
+def main():
+    iso_country = input("Enter the ISO country code (e.g., 'FI' for Finland): ").upper()
+
+    connection = mysql.connector.connect(
+        host='127.0.1.1',
+        port=3306,
+        database='countries',
+        user='root',
+        password='200687',
+        autocommit=True
+    )
+
+    cursor = connection.cursor()
+
+    airport_data = fetch_airports_by_country(cursor, iso_country)
+    if airport_data:
+        print(f"Airports in country '{iso_country}':")
+        for airport_type, count in airport_data:
+            print(f"{count} {airport_type} airport(s)")
+    else:
+        print(f"No airports found for country code '{iso_country}'.")
+
+    cursor.close()
+    connection.close()
+
+if _name_ == "_main_":
+    main()
+
+
+#8-3
+import mysql.connector
+from geopy.distance import geodesic
+
+def coordinates(cursor, ident):
+    query = f"SELECT latitude_deg, longitude_deg FROM airports WHERE ident = '{ident}'"
+    cursor.execute(query)
+    result = cursor.fetchone()
+    return result
+
+def calculate_distance(coord1, coord2):
+    return geodesic(coord1, coord2).kilometers
+
+def main():
+    airport1_icao = input("Enter the ICAO code of the first airport: ").upper()
+    airport2_icao = input("Enter the ICAO code of the second airport: ").upper()
+
+    connection = mysql.connector.connect(
+        host='127.0.1.1',
+        port=3306,
+        database='countries',
+        user='root',
+        password='200687',
+        autocommit=True
+    )
+
+    try:
+        cursor = connection.cursor()
+
+        airport1_coords = coordinates(cursor, airport1_icao)
+        airport2_coords = coordinates(cursor, airport2_icao)
+
+        if airport1_coords is None or airport2_coords is None:
+            print("One or both airports not found in the database.")
+            return
+
+        distance = calculate_distance(airport1_coords, airport2_coords)
+        print(f"The distance between {airport1_icao} and {airport2_icao} is {distance:.3f} kilometers.")
+
+    finally:
+        cursor.close()
+        connection.close()
+
+if _name_ == "_main_":
+    main()
+
+
+#9 Fundamentals of object-oriented programming
+
+#9-1
+class Car:
+
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def __str__(self):
+        return f'{self.registration_number},{self.maximum_speed},{self.current_speed},{self.travelled_distance}'
+
+#main
+car = Car("ABC-123","142")
+print(str(car))
+
+
+#9-2
+class Car:
+
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self,change_of_speed):
+
+        if self.current_speed + change_of_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        elif self.current_speed + change_of_speed  < 0:
+             self.current_speed = 0
+        else:
+            self.current_speed +=  change_of_speed
+        print(self)
+
+    def __str__(self):
+        return f'registration_number：{self.registration_number}, maximum_speed：{self.maximum_speed} km/h, current_speed：{self.current_speed} km/h, travelled_distance:{self.travelled_distance} km'
+
+#main
+car = Car("ABC-123",142)
+print(car)
+car.accelerate(30)
+car.accelerate(70)
+car.accelerate(50)
+car.accelerate(-200)
+
+
+#9-3
+class Car:
+
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self,change_of_speed):
+
+        if self.current_speed + change_of_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        elif self.current_speed + change_of_speed  < 0:
+             self.current_speed = 0
+        else:
+            self.current_speed +=  change_of_speed
+        print(f"With the change of speed {change_of_speed},the car's information : \n{self}")
+
+    def drive(self,hours):
+        self.travelled_distance += self.current_speed*hours
+        print(f"After {hours}h,the car's information : \n{self}")
+
+    def __str__(self):
+        return f'registration_number：{self.registration_number}, maximum_speed：{self.maximum_speed} km/h, current_speed：{self.current_speed} km/h, travelled_distance:{self.travelled_distance} km'
+
+#main
+car = Car("ABC-123",142)
+car.current_speed = 60
+car.travelled_distance = 2000
+
+print(car)
+car.drive(1.5)
 
 '''
-
-#8-1
+#9-4
 import random
-from random import randint
-e=randint(1,6)
-print(e)
+class Car:
+
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self,change_of_speed):
+
+        if self.current_speed + change_of_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        elif self.current_speed + change_of_speed  < 0:
+             self.current_speed = 0
+        else:
+            self.current_speed +=  change_of_speed
 
 
+    def drive(self,hours):
+        self.travelled_distance += self.current_speed*hours
 
+
+    def __str__(self):
+        return f'registration_number：{self.registration_number}, maximum_speed：{self.maximum_speed} km/h, current_speed：{self.current_speed} km/h, travelled_distance:{self.travelled_distance} km'
+
+class Race:
+    def __init__(self, name, distance, cars):
+        self.name = name
+        self.distance = distance
+        self.cars = cars
+
+    def hour_passes(self):
+        for car in self.cars:
+            change_of_speed = random.randint(-10, 15)
+            car.accelerate(change_of_speed)
+            car.drive(1)
+
+    def print_status(self):
+        print(f"Status of the race '{self.name}':\n")
+        print(f"{'Car':<15} {'Speed (km/h)':<15} {'Distance (km)'}")
+        print("-" * 40)
+        for car in self.cars:
+            print(f"{car.registration_number:<15} {car.current_speed:<15} {car.travelled_distance}")
+        print("\n")
+
+    def race_finished(self):
+        for car in self.cars:
+            if car.travelled_distance >= self.distance:
+                return True
+        return False
+
+# Main program
+if __name__ == "__main__":
+    cars = [Car(f"Car-{i+1}", random.randint(100, 200)) for i in range(10)]
+    race = Race("Grand Demolition Derby", 8000, cars)
+    hours = 0
+    while not race.race_finished():
+        race.hour_passes()
+        hours += 1
+        if hours % 10 == 0:
+            race.print_status()
+
+
+    print(f"The race '{race.name}' is finished after {hours} hours!")
+    race.print_status()

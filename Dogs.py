@@ -38,3 +38,16 @@ print(str(mydog))
 
 print(f'There are {Dog.count} dogs in all.')
 
+class Nursing:
+    
+    def __init__(self):
+        self.dogs = []
+
+    def addDog(self,name):
+        self.dogs.append(Dog(name))
+        print(f"the {self.dogs} is added")
+
+    def getDog(self):
+        for dog in self.dogs:
+            print(dog.getName(),dog.getAge())
+

@@ -7,6 +7,7 @@ class Student:
         self.gender = gender
         Student.count = Student.count + 1
         self.email = f'{self.name}@metropolia.fi'
+        self.courses = []
 
 # setter and getter
     def __str__(self):
@@ -30,6 +31,7 @@ class Student:
     def setName(self, name):
         self.name = name
 
+
 Hou = Student("Hou Wenhuang",30,"M")
 Yan = Student('Yan Xin',20,'M')
 Wu = Student('Wu Zongyan',22,'M')
@@ -45,3 +47,33 @@ print(f'There are {Student.count} students in the classroom.')
 print(Hou.email)
 #
 
+class Course:
+    def __init__(self,name):
+        self.name = name
+        self.students = []
+
+    def students_add(self, student):
+        self.students.append(student)
+        print(student.name + "is added to " + self.name)
+        return
+
+    def students_remove(self, student):
+        self.students.remove(student)
+        print(student.name + "is removed from" + self.name)
+        return
+
+class Student:
+
+    def setage(self,age):
+        self.age = age
+        return self.age
+
+    def setgender(self,gender):
+        self.gender = gender
+        return self.gender
+
+    def enrollCourse(self,course):
+
+
+
+course1=
