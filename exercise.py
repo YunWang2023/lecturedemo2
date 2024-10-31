@@ -24,7 +24,7 @@ class Author(Person):
         return f"Books written:{list_books}"
 
 class AuthorMember(Member,Author):
-    def __init__(self,membership_id,books_written):
+    def __init__(self,name,age,gender,membership_id,books_written):
         Member.__init__(self,membership_id)
         Author.__init__(self,books_written)
 
