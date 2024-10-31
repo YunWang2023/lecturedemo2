@@ -680,6 +680,222 @@ class Car:
              self.current_speed = 0
         else:
             self.current_speed +=  change_of_speed
+        print(f"With the change of speed {change_of_speed},the car's information : \n{self}")
+
+    def drive(self,hours):
+        self.travelled_distance += self.current_speed*hours
+        print(f"After {hours}h,the car's information : \n{self}")
+
+    def __str__(self):
+        return f'registration_number：{self.registration_number}, maximum_speed：{self.maximum_speed} km/h, current_speed：{self.current_speed} km/h, travelled_distance:{self.travelled_distance} km'
+
+def start_race(self):
+    cars = [Car(f"ABC-{i+1}",random.randint(100,200)) for i in range(10)]
+    hours = 0
+
+    while True:
+        hours += 1
+        print(f"\n Hour{hours}")
+
+        for car in cars:
+            change_of_speed = random.randint(-10,15)
+            car.accelerate(change_of_speed)
+            car.drive(1)
+
+        if any(car.travelled_distance >= 1000 for car in cars):
+            print("\n Race finished")
+            break
+    print("\n Final status of the car:")
+    print(f"{'Registration'}{'Max Speed'}{'Current Speed'}{'Travelled Distance'}")
+
+
+    for car in cars:
+        print(f"{car.registration_number}{car.maximum_speed }{car.current_speed}{car.travelled_distance}")
+
+#main
+
+start_race(10)
+
+
+#10 Association
+
+#10-1
+class Elevator:
+
+    def __init__(self,bottom,top):
+        self.bottom = 1
+        self.top = top
+        self.floor_now = bottom
+    def floor_up(self):
+        if self.floor_now < self.top:
+           self.floor_now += 1
+        else:
+            print("It is top floor")
+
+    def floor_down(self):
+        if self.floor_now > self.bottom:
+           self.floor_now -= 1
+        else:
+            print("It is bottom floor")
+
+    def go_to_floor(self,choice):
+
+        if choice <self.bottom or choice>self.top:
+            print("404")
+            return
+
+        print(f"Moving from {self.floor_now} to {choice}")
+
+        while choice > self.floor_now:
+            self.floor_up()
+            print(f"It is floor {self.floor_now}")
+
+        while choice < self.floor_now:
+            self.floor_down()
+            print(f"It is floor {self.floor_now}")
+
+
+#main
+h = Elevator(1,20)
+h.go_to_floor(5)
+h.go_to_floor(1)
+
+
+#10-2
+class Elevator:
+
+    def __init__(self,bottom,top):
+        self.bottom = 1
+        self.top = top
+        self.floor_now = bottom
+    def floor_up(self):
+        if self.floor_now < self.top:
+           self.floor_now += 1
+        else:
+            print("It is top floor")
+
+    def floor_down(self):
+        if self.floor_now > self.bottom:
+           self.floor_now -= 1
+        else:
+            print("It is bottom floor")
+
+    def go_to_floor(self,choice):
+
+        if choice <self.bottom or choice>self.top:
+            print("404")
+            return
+
+        print(f"Moving from {self.floor_now} to {choice}")
+
+        while choice > self.floor_now:
+            self.floor_up()
+            print(f"It is floor {self.floor_now}")
+
+        while choice < self.floor_now:
+            self.floor_down()
+            print(f"It is floor {self.floor_now}")
+
+class Building:
+    def __init__(self,bottom,top,numbers):
+        self.bottom = bottom
+        self.top = top
+        self.elevators = {num: Elevator(bottom, top) for num in numbers}
+
+    def run_elevator(self,the_number_of_the_elevator, the_destination_floor):
+        print(f"The number of the elevator:{the_number_of_the_elevator}")
+        if the_number_of_the_elevator in self.elevators:
+             elevator = self.elevators[the_number_of_the_elevator]
+             elevator.go_to_floor(the_destination_floor)
+        else:
+             print("Error: Invalid elevator number.")
+
+#main
+building = Building(2,10,[1,2,3])
+building.run_elevator(2, 5)
+
+
+#10-3
+class Elevator:
+
+    def __init__(self,bottom,top):
+        self.bottom = 1
+        self.top = top
+        self.floor_now = bottom
+    def floor_up(self):
+        if self.floor_now < self.top:
+           self.floor_now += 1
+        else:
+            print("It is top floor")
+
+    def floor_down(self):
+        if self.floor_now > self.bottom:
+           self.floor_now -= 1
+        else:
+            print("It is bottom floor")
+
+    def go_to_floor(self,choice):
+
+        if choice <self.bottom or choice>self.top:
+            print("404")
+            return
+
+        print(f"Moving from {self.floor_now} to {choice}")
+
+        while choice > self.floor_now:
+            self.floor_up()
+            print(f"It is floor {self.floor_now}")
+
+        while choice < self.floor_now:
+            self.floor_down()
+            print(f"It is floor {self.floor_now}")
+
+class Building:
+    def __init__(self,bottom,top,numbers):
+        self.bottom = bottom
+        self.top = top
+        self.elevators = {num: Elevator(bottom, top) for num in numbers}
+
+    def run_elevator(self,the_number_of_the_elevator, the_destination_floor):
+        print(f"The number of the elevator:{the_number_of_the_elevator}")
+        if the_number_of_the_elevator in self.elevators:
+             elevator = self.elevators[the_number_of_the_elevator]
+             elevator.go_to_floor(the_destination_floor)
+        else:
+             print("Error: Invalid elevator number.")
+
+
+    def fire_alarm(self):
+        print("Fire alarm activated! All elevators moving to the bottom floor.")
+        for elevator_number, elevator in self.elevators.items():
+            print(f"Elevator {elevator_number} moving to the bottom floor.")
+            elevator.go_to_floor(self.bottom)  # 将所有电梯移到底层
+        print("All elevators have reached the bottom floor.")
+
+#main
+building = Building(2,10,[1,2,3])
+building.run_elevator(2, 5)
+building.fire_alarm()
+
+
+#10-4
+import random
+class Car:
+
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self,change_of_speed):
+
+        if self.current_speed + change_of_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        elif self.current_speed + change_of_speed  < 0:
+             self.current_speed = 0
+        else:
+            self.current_speed +=  change_of_speed
 
 
     def drive(self,hours):
@@ -715,7 +931,9 @@ class Race:
                 return True
         return False
 
-# Main program
+
+
+# Main
 if __name__ == "__main__":
     cars = [Car(f"Car-{i+1}", random.randint(100, 200)) for i in range(10)]
     race = Race("Grand Demolition Derby", 8000, cars)
@@ -729,39 +947,6 @@ if __name__ == "__main__":
 
     print(f"The race '{race.name}' is finished after {hours} hours!")
     race.print_status()
-
+    
 '''
-#10 Association
-
-#10-1
-class Elevator:
-
-    floor_now = 0
-
-    def __init__(self,bottom,top):
-        self.bottom = 1
-        self.top = top
-
-    def floor_up(self):
-        self.floor_now += 1
-
-    def floor_down(self):
-        self.floor_now -= 1
-
-    def go_to_floor(self,choice):
-        if choice == 1:
-            print(f"It is floor {self.floor_now}")
-        else:
-            while choice > self.floor_now:
-                self.floor_up()
-                print(f"It is floor {self.floor_now}")
-                choice -= 1
-            while choice < self.floor_now:
-                self.floor_down()
-                print(f"It is floor {self.floor_now}")
-                choice += 1
-
-#main
-h = Elevator(1,10)
-h.go_to_floor(5)
-h.go_to_floor(1)
+#11 Inheritance
