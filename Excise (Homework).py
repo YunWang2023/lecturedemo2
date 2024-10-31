@@ -661,7 +661,7 @@ car.travelled_distance = 2000
 print(car)
 car.drive(1.5)
 
-'''
+
 #9-4
 import random
 class Car:
@@ -729,3 +729,39 @@ if __name__ == "__main__":
 
     print(f"The race '{race.name}' is finished after {hours} hours!")
     race.print_status()
+
+'''
+#10 Association
+
+#10-1
+class Elevator:
+
+    floor_now = 0
+
+    def __init__(self,bottom,top):
+        self.bottom = 1
+        self.top = top
+
+    def floor_up(self):
+        self.floor_now += 1
+
+    def floor_down(self):
+        self.floor_now -= 1
+
+    def go_to_floor(self,choice):
+        if choice == 1:
+            print(f"It is floor {self.floor_now}")
+        else:
+            while choice > self.floor_now:
+                self.floor_up()
+                print(f"It is floor {self.floor_now}")
+                choice -= 1
+            while choice < self.floor_now:
+                self.floor_down()
+                print(f"It is floor {self.floor_now}")
+                choice += 1
+
+#main
+h = Elevator(1,10)
+h.go_to_floor(5)
+h.go_to_floor(1)
