@@ -950,3 +950,5 @@ if __name__ == "__main__":
     
 '''
 #11 Inheritance
+#11-1
+class
