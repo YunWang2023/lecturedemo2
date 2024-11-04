@@ -974,7 +974,7 @@ publication2 = Book("Compartment No. 6","Rosa Liksom","192")
 print(publication1.print_information())
 print(publication2.print_information())
 
-'''
+
 #11-2
 class Car :
     def __init__(self,registration_number, maximum_speed):
@@ -1016,3 +1016,67 @@ car2.drive(3)
 
 print(f"car1.travelled_distance：{car1.travelled_distance}")
 print(f"car2.travelled_distance：{car2.travelled_distance}")
+
+
+#12 Using external interfaces
+#12-1
+import json
+import requests
+
+def get_chuck_norris_joke():
+    global joke_data
+    url = "https://api.chucknorris.io/jokes/random"
+
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            joke_data = response.json()
+        print(joke_data['value'])
+
+
+    except requests.exceptions.RequestException as e:
+        print ("Request could not be completed.")
+
+get_chuck_norris_joke()
+
+
+#12-2
+import requests
+
+
+def get_weather(municipality, api_key):
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "q": municipality,
+        "appid": api_key
+    }
+
+    try:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            weather_data = response.json()
+            weather_description = weather_data['weather'][0]['description']
+            temperature_kelvin = weather_data['main']['temp']
+            temperature_celsius = temperature_kelvin - 273.15
+
+
+        print(f"Weather in {municipality.capitalize()}: {weather_description.capitalize()}")
+        print(f"Temperature: {temperature_celsius:.2f}°C")
+
+    except requests.exceptions.RequestException as e:
+        print("Error fetching the weather data:", e)
+    except KeyError:
+        print("Could not retrieve weather information. Please check the municipality name or try again.")
+
+
+
+municipality = input("Enter the name of the municipality: ")
+
+api_key = "22da185538955ffdb39a97a12f07b292"
+
+
+get_weather(municipality, api_key)
+
+'''
+#13 Setting up a backend service with an interface
+#13-1
