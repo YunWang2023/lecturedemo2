@@ -948,7 +948,71 @@ if __name__ == "__main__":
     print(f"The race '{race.name}' is finished after {hours} hours!")
     race.print_status()
     
-'''
+
 #11 Inheritance
 #11-1
-class
+class Publication:
+    def __init__(self,name):
+        self.name = name
+class Book(Publication):
+    def __init__(self,name,author,page_count):
+        super().__init__(name)
+        self.author = author
+        self.page_count = page_count
+    def print_information(self):
+        return f"This is a book. self.name: {self.name}, author: {self.author}, page_count: {self.page_count}"
+class Magazine(Publication):
+    def __init__(self,name,chief_editor):
+        super().__init__(name)
+        self.chief_editor = chief_editor
+    def print_information(self):
+        return f"This is a magazine. name: {self.name}, chief_editor: {self.chief_editor}"
+
+__name__=="__main__"
+publication1 = Magazine("Donald Duck","Aki Hyyppä")
+publication2 = Book("Compartment No. 6","Rosa Liksom","192")
+print(publication1.print_information())
+print(publication2.print_information())
+
+'''
+#11-2
+class Car :
+    def __init__(self,registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self,change_of_speed):
+
+        if self.current_speed + change_of_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        elif self.current_speed + change_of_speed  < 0:
+             self.current_speed = 0
+        else:
+            self.current_speed +=  change_of_speed
+
+
+    def drive(self,hours):
+        self.travelled_distance += self.current_speed*hours
+
+class ElectricCar(Car):
+    def __init__(self, registration_number, maximum_speed,  capacity_in_kilowatt_hours):
+        super().__init__(registration_number, maximum_speed)
+        self.capacity_in_kilowatt_hours = capacity_in_kilowatt_hours
+
+class GasolineCar(Car):
+    def __init__(self, registration_number, maximum_speed,  volume_in_liters):
+        super().__init__(registration_number, maximum_speed)
+        self.volume_in_liters = volume_in_liters
+
+car1 = ElectricCar("ACD-15", 180, 32.3 )
+car2 = GasolineCar("ACD-123", 165, 32.3 )
+
+car1.accelerate(130)
+car2.accelerate(150)
+car1.drive(3)
+car2.drive(3)
+
+print(f"car1.travelled_distance：{car1.travelled_distance}")
+print(f"car2.travelled_distance：{car2.travelled_distance}")
